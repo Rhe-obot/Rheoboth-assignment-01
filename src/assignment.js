@@ -10,17 +10,27 @@ const assignment = {};
  * (1 to destination) where destination is a number greater than 1 and destination is included when calculating the sum.
  *
  * If you did Challenge - 1, remove the comment in the line just after this function
- *
+
  * @param {Number} destination is the stopping number
  * @returns number the sum of the numbers from 1 to destination
  */
 function sumOfNumbersTo(destination) {
+    if (destination <= 1) {
+        return 0;
+    }
+
     let sum = 0;
-    return sum
+    for (let i = 1; i <= destination; i++) {
+        sum += i;
+    }
+
+    return sum;
 }
+const destination = 3; 
+const result = sumOfNumbersTo(destination);
+console.log("Sum of numbers between 1 and " + destination + " is: " + result);
 
-
-// assignment.sumOfNumbersTo = sumOfNumbersTo;
+ assignment.sumOfNumbersTo = sumOfNumbersTo;
 
 /**
  * Challenge - 2
@@ -33,23 +43,37 @@ function sumOfNumbersTo(destination) {
  * @returns the object containing count, sum, arrayOfEvenNumbers from 1 to destination
  */
 function countEvenNumbersWithin(destination) {
-    // Write your code here
-    // get the number from 1 to destination
-    let sum = 0;
+    if (destination <= 1) {
+        return {
+            count: 0,
+            sum: 0,
+            arrayOfEvenNumbers: []
+        };
+    }
+
     let count = 0;
+    let sum = 0;
     let arrayOfEvenNumbers = [];
 
+    for (let i = 2; i <= destination; i += 2) {
+        count++;
+        sum += i;
+        arrayOfEvenNumbers.push(i);
+    }
+
     return {
-        // property value shorthand
-        // when the property name and the value name are the same
-        // you can just write the property name in your object
-        count,
-        sum,
-        arrayOfEvenNumbers
+        count: count,
+        sum: sum,
+        arrayOfEvenNumbers: arrayOfEvenNumbers
     };
 }
+const Destination = 5;
+const Result = countEvenNumbersWithin(destination);
+console.log("Count even numbers:", result.count);
+console.log("Sum of even numbers:", result.sum);
+console.log("Array of even numbers:", result.arrayOfEvenNumbers);
 
-// assignment.countEvenNumbersWithin = countEvenNumbersWithin;
+ assignment.countEvenNumbersWithin = countEvenNumbersWithin;
 
 /**
  * Challenge - 3
